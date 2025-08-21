@@ -1,4 +1,3 @@
-import { sum } from "lodash";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
