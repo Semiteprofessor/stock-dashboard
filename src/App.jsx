@@ -1,5 +1,6 @@
 import React from "react";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
+
 import * as api from "./services";
 
 import { Search, Menu, TrendingUp, TrendingDown } from "lucide-react";
@@ -24,9 +25,10 @@ const indices = [
 ];
 
 const StockDashboard = () => {
-  const { data, isLoading } = useQuery(["get-stocks"], () =>
-    api.getStocks("IBM")
-  );
+  const { data, isLoading } = useQuery({
+    queryKey: ["get-stocks", "IBM"],
+    queryFn: () => api.getStocks("IBM"),
+  });
 
   return (
     <div className="bg-gray-900 text-white min-h-screen font-sans flex flex-col">
